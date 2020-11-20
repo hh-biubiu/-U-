@@ -37,8 +37,14 @@ export default {
       }),
     login(){
        reUserLogin(this.user).then(res=>{
-            console.log(res.data.list);
-            this.$router.push('/index')
+            // console.log(res.data.code);
+            
+            if(res.data.code=='200'){
+              sessionStorage.setItem('isLogin',1)
+              this.$router.push('/index')
+            }else{
+              alert(res.data.msg)
+            }
 	  })
     }
   },
